@@ -9,6 +9,12 @@ openai = "*"
 fastapi = {extras = ["standard"], version = "*"}
 ollama = "*"
 sqlalchemy = "*"
+duckduckgo-search = "*"
+pandas = "*"
+duckdb = "*"
+python-dotenv = "*"
+pgvector = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
