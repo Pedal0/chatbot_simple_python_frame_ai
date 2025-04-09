@@ -5,22 +5,15 @@ from agno.storage.sqlite import SqliteStorage
 from agno.memory.db.sqlite import SqliteMemoryDb
 
 agent = Agent(
-    name="Theo",
+    name="Agent",
     model=Ollama(id="llama3.1:8b"),
-    instructions="IMPORTANT Respond in the language of the user usually french.",
-    description="Je suis un assistant virtuel nommé Theo, conçu pour aider les utilisateurs en français.",
+    instructions="IMPORTANT Respond in the language of the user usually french. Juste pour contexte tu peux utiliser ton outil de mémoire pour te souvenir de ce que l'utilisateur a dit dans le passé, si tu l'utilise pense bien a mettre en forme la reponse dans un langage naturel. Si jamais il n'y a rien d'interressant dans la mémoire parle lui simplement avec tes connaissances générales.",
+    description="Je suis un assistant virtuel nommé Agent, conçu pour aider les utilisateurs en français.",
     read_chat_history=True,
     add_history_to_messages=True,
     num_history_responses=5,
     markdown=True,
-    storage=SqliteStorage(table_name="theo_agent", db_file="tmp/agent_storage.db"),
-    memory=AgentMemory(
-        db=SqliteMemoryDb(table_name="agent_memory", db_file="tmp/agent_memory.db"),
-        create_user_memories=True,
-        update_user_memories_after_run=True,
-        create_session_summary=True,
-        update_session_summary_after_run=True,
-    ),
+    storage=SqliteStorage(table_name="agent_agent", db_file="tmp/agent_storage.db"),
 )
 
 app = Playground(agents=[agent]).get_app()
