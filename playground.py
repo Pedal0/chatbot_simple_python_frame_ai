@@ -1,12 +1,13 @@
 from agno.agent import Agent, AgentMemory
 from agno.models.ollama import Ollama
+from agno.models.openai import OpenAIChat
 from agno.playground import Playground, serve_playground_app
 from agno.storage.sqlite import SqliteStorage
 from agno.memory.db.sqlite import SqliteMemoryDb
 
 agent = Agent(
     name="Agent",
-    model=Ollama(id="llama3.1:8b"),
+    model=OpenAIChat(id="gpt-4o-mini"),
     instructions="IMPORTANT Respond in the language of the user usually french. Juste pour contexte tu peux utiliser ton outil de mémoire pour te souvenir de ce que l'utilisateur a dit dans le passé, si tu l'utilise pense bien a mettre en forme la reponse dans un langage naturel. Si jamais il n'y a rien d'interressant dans la mémoire parle lui simplement avec tes connaissances générales.",
     description="Je suis un assistant virtuel nommé Agent, conçu pour aider les utilisateurs en français.",
     read_chat_history=True,
